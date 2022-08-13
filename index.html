@@ -1,0 +1,70 @@
+<!DOCTYPE html lang="pt-br">
+<!-- @copyright newtsarthur -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <title>Cards</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="icon" type="image/jpg" href="https://icon-library.com/images/fantasy-icon/fantasy-icon-8.jpg"/>
+    </head>
+    <body>
+        <div class="container">
+            <section class="small">
+                <input type="checkbox"id="smallbot">
+                <label title="voltar" for="smallbot" class="smilzin">
+                    <div id="smile"></div>
+                    <script>
+                        const smile = document.getElementById('smile');
+                        smile.onclick = function() {
+                            smile.classList.toggle('active');
+                            images[currentImageIndex].classList.remove("cards-selected");
+                            currentImageIndex--
+                            if(currentImageIndex <! max)
+                                currentImageIndex = 2
+                            images[currentImageIndex].classList.add("cards-selected");
+                        }
+                    </script>
+                </label>
+            </section>
+            <ul class="ca">
+                <li>
+                    <a class="vani">
+                        <img id="draw" class="cards" src="./img/Cedrico de Blaviken.png">
+                        <img id="draw" class="cards" src="./img/Mathuzalém Amável Pinto.png">
+                        <img id="draw" class="cards" src="./img/Thors Karlsefni.png">
+                    </a>
+                </li>
+            </ul>
+            <section class="direita">
+                <input type="checkbox"id="direitabot">
+                <label title="próxima" for="direitabot" class="direitinhzin">
+                    <div id="dite"></div>
+                    <script>
+                        const dite = document.getElementById('dite');
+                        currentImageIndex = 0;
+                        images = document.querySelectorAll('#draw')
+                        max = images.length;
+                        console.log(images);
+                        dite.onclick = function() {
+                            dite.classList.toggle('active');
+                            images[currentImageIndex].classList.remove("cards-selected");
+                            currentImageIndex++
+                            if(currentImageIndex >= max)
+                                currentImageIndex = 0
+                            images[currentImageIndex].classList.add("cards-selected");
+                        }
+                    </script>
+                </label>
+            </section>
+        </div>
+    </body>
+    <script type="text/javascript" src="js\vanilla-tilt.min.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".vani"), {
+            max: 25,
+            speed: 400
+        });
+        VanillaTilt.init(document.querySelectorAll(".vani"));
+    </script>
+</html>
